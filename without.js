@@ -1,67 +1,50 @@
-const eqArrays = (arr1,arr2) => {
-  let match = true;
-
-  // both arrays have same length check
-  if(arr1.length !== arr2.length){
-    return false;
-  }
-
-  // elements in same position are equal
-  for (let i in arr1){
-    if (arr1[i] !== arr2[i]){
-      match = false;
-    }
-  }
-  return match;
-};
-
-const assertArraysEqual = (arr1, arr2) => {
-  // Display text element in array surounded by ""
-  const displayArrayExactly = (array) => {
-    let arr = '';
-
-    for (let ind in array) {
-      if (typeof array[ind] === 'string') {
-        arr += `\"${array[ind]}\"`;
-      } else {
-        arr += `${array[ind]}`;
-      }
-      if (ind < array.length - 1) {
-        arr += ', ';
-      }
-    }
-    return arr;
-  };
-
-  // Print out assertion message
-  if (eqArrays(arr1, arr2) === true) {
-    console.log(`✅ Assertion Passed: [${displayArrayExactly(arr1)}] === [${displayArrayExactly(arr2)}]`);
+const assertArraysEqual = (index1, index2) =>{
+  if (eqArrays(index1, index2)) {
+    console.log(`✅✅✅ ${index1} === ${index2}`);
   } else {
-    console.log(`🛑 Assertion Failed: [${displayArrayExactly(arr1)}] !== [${displayArrayExactly(arr2)}]`);
+    console.log(`❌❌❌ ${index1} !== ${index2}`);
   }
 };
 
-// return a subset of a given array, removing unwanted elements
-const without = (source, itemsToRemove) => {
-  // Copy the array
-  let arr = source.slice();
+// FUNCTION IMPLEMENTATION
 
-  // Remove from arr unwanted values
-  for (let rmv of itemsToRemove) {
-    for (let src in arr) {
-      if ( rmv === arr[src]) {
-        arr.splice(src, 1);
+const assertEqual = (actual, expected) =>{
+  if (actual === expected) {
+    console.log(`✅✅✅ ${actual} === ${expected}`);
+  } else {
+    console.log(`❌❌❌ ${actual} !== ${expected}`);
+  }
+};
+// FUNCTION IMPLEMENTATION
+
+const eqArrays = (index1, index2) => {
+ 
+  if (index1.length !== index2.length) {
+    return false;
+  } else {
+    for (let i = 0; i < index1.length; i++) {
+      if (index1[i] !== index2[i]) {
+        return false;
       }
     }
+    return true;
   }
-  return arr;
 };
 
-assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
-assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
-assertArraysEqual(without([true, "2", false], [false, "true", "3"]), [true, "2"]);
+// FUNCTION IMPLEMENTATION
+const without = (array1, removeItem) => {
+  let newArr = [];
+  for (let i of array1) {
+    if (!removeItem.includes(i)) {
+      newArr.push(i);
+    }
+  }
+  return newArr;
+};
 
-// Make sure the original array was not altered by the without function
+// TEST CODE
+
+console.log(without([1, 2, 3], [1])); // => [2, 3]
+console.log(without(["1", "2", "3"], [1, 2, "3"])); // => ["1", "2"]
 const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]); // no need to capture return value for this test case
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+console.log(without(words, ["lighthouse"]));
