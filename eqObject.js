@@ -7,7 +7,6 @@ const assertEqual = (actual, expected) =>{
 };
 
 // FUNCTION IMPLEMENTATION
-
 const eqArrays = (index1, index2) => {
  
   if (index1.length !== index2.length) {
@@ -21,6 +20,7 @@ const eqArrays = (index1, index2) => {
     return true;
   }
 };
+// TEST CODE
 
 
 const eqObjects = function(object1, object2) {
