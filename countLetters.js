@@ -9,11 +9,11 @@ const assertEqual = (actual, expected) =>{
 const countLetters = function (sentence) {
   const result = {};
   for (let letter of sentence) {
-    if (letter !== " ") {
-      if (result[letter]) {
-        result[letter] += 1;
+    if (letter !== " ") {   // letter is initinalized
+      if (result[letter]) {   //letter is declared as the key to result obj if true
+        result[letter] += 1;  // counting the key and adding to the value of the objects
       } else {
-        result[letter] = 1;
+        result[letter] = 1;  // key once is saved in the value of the object
       }
     }
   }
@@ -25,4 +25,4 @@ const result1 = countLetters("My name is Maninder");
 assertEqual(result1["n"], 3);
 assertEqual(result1["a"], 2);
 assertEqual(result1["o"], undefined);
-assertEqual(result1["z"], undefined);
+assertEqual(result1["i"], undefined);

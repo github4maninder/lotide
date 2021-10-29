@@ -40,6 +40,7 @@ const middle = (array) => {
     return [array[Math.floor(array.length / 2)]];
   }
 };
+
 // output test code
 // console.log(middle([1]));
 // console.log(middle([1, 2]));
