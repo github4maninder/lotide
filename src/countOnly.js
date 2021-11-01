@@ -35,9 +35,9 @@ const firstNames = [
 
 const result1 = countOnly(firstNames, {
   Jason: true,
-  Karima: true,
+  Karima: false,
   Fang: true,
-  Agouhanna: false,
+  Agouhanna: true,
 });
 
 console.log(countOnly(firstNames,result1));
